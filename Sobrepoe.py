@@ -1,3 +1,20 @@
+""" 
+Copyright (C) <2011>  <Jean Habib & Thiago Lechuga>
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""
+
+
 #Sorteia uma cena - local que o premio ira sair -
 def escolheScene():
 	cenas=["Scene", "Scene.002", "Scene.003", "Scene.004"]
@@ -35,7 +52,6 @@ controller = GameLogic.getCurrentController()
 act = controller.actuators["premio"]
 
 # set scene name
-#TODO: Sortear o premio
 act.scene = escolhePremio()
 controller.activate(act)
 
