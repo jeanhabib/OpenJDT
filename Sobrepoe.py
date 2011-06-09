@@ -14,7 +14,6 @@ Copyright (C) <2011>  <Jean Habib & Thiago Lechuga>
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-
 #Sorteia uma cena - local que o premio ira sair -
 def escolheScene():
 	cenas=["Scene", "Scene.002", "Scene.003", "Scene.004"]
@@ -52,6 +51,7 @@ controller = GameLogic.getCurrentController()
 act = controller.actuators["premio"]
 
 # set scene name
+#TODO: Sortear o premio
 act.scene = escolhePremio()
 controller.activate(act)
 
