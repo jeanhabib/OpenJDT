@@ -15,7 +15,7 @@ Copyright (C) <2011>  <Jean Habib & Thiago Lechuga>
 """
 
 #Sorteia uma cena - local que o premio ira sair -
-def escolheScene():
+def escolhe_scene():
 	cenas=["Scene", "Scene.002", "Scene.003", "Scene.004"]
 	from random import seed,choice
 	seed()
@@ -25,12 +25,39 @@ def escolheScene():
 		
 	return sorteado
 
+def monta_lista_premios():
+	import ConfigParser
+
+	#Pega as confs do arquivo
+	config = ConfigParser.RawConfigParser()
+	config.read('configs.cfg')
+
+ 	premios=["broche"] * config.getint('premios', 'broche')
+	premios+=["Camiseta"] * config.getint('premios', 'Camiseta')
+	premios+=["tuxP"] * config.getint('premios', 'tuxP')
+	premios+=["JavaEaD"] * config.getint('premios', 'JavaEaD')
+
+	print premios
+	return premios
+
+def remove_premio_lista(premio):
+	import ConfigParser
+
+	#Carrega conf do arquivo
+	config = ConfigParser.RawConfigParser()
+	config.read('configs.cfg')
+
+	valor = config.getint('premios', premio) - 1
+	config.set('premios', premio, str(valor))
+
+
+	# Writing our configuration file to 'example.cfg'
+	with open('configs.cfg', 'wb') as configfile:
+	    config.write(configfile)
+
 #Sorteia um premio
-def escolhePremio():
-	premios=["broche"] * 12
-	premios+=["Camiseta"] * 4
-	premios+=["tuxP"] * 2
-	premios+=["JavaEaD"] * 1
+def escolhe_premio():
+	premios=monta_lista_premios()
 	
 	from random import seed,choice,shuffle
 	seed()
@@ -39,6 +66,7 @@ def escolhePremio():
 	
 	print "Premio sorteado:"+sorteado
 		
+	remove_premio_lista(sorteado);
 	return sorteado	
 
 
@@ -52,7 +80,7 @@ act = controller.actuators["premio"]
 
 # set scene name
 #TODO: Sortear o premio
-act.scene = escolhePremio()
+act.scene = escolhe_premio()
 controller.activate(act)
 
 #Troca Cena
@@ -60,5 +88,5 @@ controller.activate(act)
 #controller.activate(act)
 
 act = controller.actuators["adiciona"]
-act.scene=escolheScene()
+act.scene=escolhe_scene()
 controller.activate(act)
