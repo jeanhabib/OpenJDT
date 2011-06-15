@@ -36,8 +36,7 @@ def monta_lista_premios():
 	premios+=["Camiseta"] * config.getint('premios', 'Camiseta')
 	premios+=["tuxP"] * config.getint('premios', 'tuxP')
 	premios+=["JavaEaD"] * config.getint('premios', 'JavaEaD')
-
-	print premios
+	
 	return premios
 
 def remove_premio_lista(premio):
@@ -58,7 +57,8 @@ def remove_premio_lista(premio):
 #Sorteia um premio
 def escolhe_premio():
 	premios=monta_lista_premios()
-	
+	print premios
+
 	from random import seed,choice,shuffle
 	seed()
 	shuffle(premios)
@@ -67,6 +67,8 @@ def escolhe_premio():
 	print "Premio sorteado:"+sorteado
 		
 	remove_premio_lista(sorteado);
+	
+
 	return sorteado	
 
 
