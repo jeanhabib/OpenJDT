@@ -33,9 +33,9 @@ def monta_lista_premios():
 	config.read('configs.cfg')
 
  	premios=["broche"] * config.getint('premios', 'broche')
-	premios+=["Camiseta"] * config.getint('premios', 'Camiseta')
+	premios+=["camiseta"] * config.getint('premios', 'camiseta')
 	premios+=["tuxP"] * config.getint('premios', 'tuxP')
-	premios+=["JavaEaD"] * config.getint('premios', 'JavaEaD')
+	premios+=["curso"] * config.getint('premios', 'curso')
 	
 	return premios
 
